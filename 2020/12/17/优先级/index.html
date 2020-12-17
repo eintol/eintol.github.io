@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="优先级的判断间接选择（继承）12345678910111213ul &amp;#123;	color: red;&amp;#125;li &amp;#123;	color: green;&amp;#125;&lt;ul&gt;	&lt;li&gt;		&lt;p&gt;test&lt;&#x2F;p&gt;	&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;test 颜色为 green离目标越近的选择器优先级越高，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://eintol.github.io/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="优先级的判断间接选择（继承）12345678910111213ul &amp;#123;	color: red;&amp;#125;li &amp;#123;	color: green;&amp;#125;&lt;ul&gt;	&lt;li&gt;		&lt;p&gt;test&lt;&#x2F;p&gt;	&lt;&#x2F;li&gt;&lt;&#x2F;ul&gt;test 颜色为 green离目标越近的选择器优先级越高，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-17T03:13:01.218Z">
+<meta property="article:modified_time" content="2020-12-17T03:20:16.490Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://eintol.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-优先级" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/" class="article-date">
+  <time datetime="2020-12-17T03:13:01.218Z" itemprop="datePublished">2020-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="优先级的判断"><a href="#优先级的判断" class="headerlink" title="优先级的判断"></a>优先级的判断</h3><h4 id="间接选择（继承）"><a href="#间接选择（继承）" class="headerlink" title="间接选择（继承）"></a>间接选择（继承）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ul &#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">	color: green;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;</span><br><span class="line">		&lt;p&gt;test&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line">test 颜色为 green</span><br><span class="line">离目标越近的选择器优先级越高，与前后顺序无关</span><br></pre></td></tr></table></figure>
+
+<h4 id="相同选择器直接选中"><a href="#相同选择器直接选中" class="headerlink" title="相同选择器直接选中"></a>相同选择器直接选中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">	color: green;</span><br><span class="line">&#125;</span><br><span class="line">&lt;p&gt;test&lt;&#x2F;p&gt;</span><br><span class="line">test 颜色为 green</span><br><span class="line">与前后顺序有关，后面的选择器优先级高</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同选择器直接选中"><a href="#不同选择器直接选中" class="headerlink" title="不同选择器直接选中"></a>不同选择器直接选中</h4><p>优先级大小：id&gt;类&gt;标签&gt;通配符&gt;继承&gt;浏览器默认</p>
+<h5 id="important"><a href="#important" class="headerlink" title="important"></a>important</h5><p>将直接选中的选择器里的属性优先级提到最高，间接选中无效</p>
+<p><strong><font color="red">!important</font></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#tt &#123;</span><br><span class="line">	color: red;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">	color: yellow !important;</span><br><span class="line">	&#x2F;*这种属于间接选中就无效*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">	color: green !important;</span><br><span class="line">&#125;</span><br><span class="line">* &#123;</span><br><span class="line">	color: blue !important;</span><br><span class="line">	&#x2F;*通配符属于直接选中有效*&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;</span><br><span class="line">		&lt;p id&#x3D;&quot;tt&quot;&gt;test&lt;&#x2F;p&gt;</span><br><span class="line">	&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line">test 颜色为 green</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://eintol.github.io/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/" data-id="ckis9qqup0002v8wcg2hv88p2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/17/%E6%A0%87%E7%AD%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/17/%E6%96%87%E5%AD%97%E6%A0%B7%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/17/%E6%A0%87%E7%AD%BE/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/17/%E6%96%87%E5%AD%97%E6%A0%B7%E5%BC%8F/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/17/overflow%20hidden/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/17/StringBuilder/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
