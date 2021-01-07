@@ -5,13 +5,17 @@
   
 
   
-  <title>Archives: 2020/12 | 程建尊的博客</title>
+  <title>程建尊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="在create database语句中使用 attach 关键字附加数据库 使用 drop database 删除数据库 使用存储过程 sp_detach_db 分离数据库  根据多存储信息的不同，数据库文件可以分为 主数据库文件，次数据库文件和事务日志文件    名称 用途 扩展名 数量    主数据库文件 存放数据库对象 .mdf 每个数据库只有1个   次数据库文件 数据较多时补充存放数据库">
+<meta property="og:type" content="article">
 <meta property="og:title" content="程建尊的博客">
-<meta property="og:url" content="https://eintol.github.io/archives/2020/12/index.html">
+<meta property="og:url" content="https://eintol.github.io/2021/01/07/chapter4/index.html">
 <meta property="og:site_name" content="程建尊的博客">
+<meta property="og:description" content="在create database语句中使用 attach 关键字附加数据库 使用 drop database 删除数据库 使用存储过程 sp_detach_db 分离数据库  根据多存储信息的不同，数据库文件可以分为 主数据库文件，次数据库文件和事务日志文件    名称 用途 扩展名 数量    主数据库文件 存放数据库对象 .mdf 每个数据库只有1个   次数据库文件 数据较多时补充存放数据库">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-07T04:23:30.851Z">
+<meta property="article:modified_time" content="2021-01-03T07:03:05.821Z">
 <meta property="article:author" content="程建尊">
 <meta name="twitter:card" content="summary">
   
@@ -62,116 +66,88 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/17/%E6%A0%87%E7%AD%BE/" class="archive-article-date">
-  <time datetime="2020-12-17T03:13:07.052Z" itemprop="datePublished">Dec 17</time>
+        <section id="main"><article id="post-chapter4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/07/chapter4/" class="article-date">
+  <time datetime="2021-01-07T04:23:30.851Z" itemprop="datePublished">2021-01-07</time>
 </a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/17/%E6%A0%87%E7%AD%BE/">标签</a>
-    </h1>
-  
-
-    </header>
+    
   </div>
-</article>
-  
+  <div class="article-inner">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/" class="archive-article-date">
-  <time datetime="2020-12-17T03:13:01.218Z" itemprop="datePublished">Dec 17</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/17/%E4%BC%98%E5%85%88%E7%BA%A7/">优先级</a>
-    </h1>
-  
+        <p>在create database语句中使用 <strong>attach</strong> 关键字附加数据库</p>
+<p>使用 <strong>drop database</strong> 删除数据库</p>
+<p>使用存储过程 <strong>sp_detach_db</strong> 分离数据库</p>
+<hr>
+<p><font color=orange>根据多存储信息的不同，数据库文件可以分为 <strong>主数据库文件，次数据库文件和事务日志文件</strong></font></p>
+<table>
+<thead>
+<tr>
+<th align="center"><font color=orange>名称</font></th>
+<th align="center">用途</th>
+<th align="center">扩展名</th>
+<th align="center">数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">主数据库文件</td>
+<td align="center">存放数据库对象</td>
+<td align="center">.mdf</td>
+<td align="center">每个数据库只有1个</td>
+</tr>
+<tr>
+<td align="center">次数据库文件</td>
+<td align="center">数据较多时补充存放数据库对象</td>
+<td align="center">.ndf</td>
+<td align="center">可以没有，也可有多个</td>
+</tr>
+<tr>
+<td align="center">事务日志文件</td>
+<td align="center">存放数据库事务日志信息</td>
+<td align="center">.ldf</td>
+<td align="center">至少1个，也可由多个</td>
+</tr>
+</tbody></table>
+<p><font color=orange>分离与删除数据库的区别：</font></p>
+<ul>
+<li><font color=orange><strong>相同：两者都是从数据库管理系统中除去数据库，在管理界面中再也看不到该数据库</strong></font></li>
+<li><font color=orange><strong>不同：删除数据库时数据库的物理文件被彻底删除，分离数据库时数据库的物理文件依然存在，所以才能被复制，然后在另一台服务器上被附加</strong></font></li>
+</ul>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/17/%E6%96%87%E5%AD%97%E6%A0%B7%E5%BC%8F/" class="archive-article-date">
-  <time datetime="2020-12-17T03:13:01.211Z" itemprop="datePublished">Dec 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/17/%E6%96%87%E5%AD%97%E6%A0%B7%E5%BC%8F/">文字样式</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/17/StringBuilder/" class="archive-article-date">
-  <time datetime="2020-12-17T03:09:18.615Z" itemprop="datePublished">Dec 17</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://eintol.github.io/2021/01/07/chapter4/" data-id="ckjmcisgo0005fswc9apxamaa" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/17/StringBuilder/">StringBuiler</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/12/10/test/" class="archive-article-date">
-  <time datetime="2020-12-10T14:57:53.000Z" itemprop="datePublished">Dec 10</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/10/test/">测试</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/07/chapter5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/01/07/chapter2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

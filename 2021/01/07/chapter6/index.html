@@ -5,19 +5,18 @@
   
 
   
-  <title>测试 | 程建尊的博客</title>
+  <title>程建尊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo博客搭建测试..">
+  <meta name="description" content="使用关键字 create view 可以创建视图 索引可以提高数据查询的速度，因此，建立索引时，越多越好。这种说法是 错误 的 在SQL Server中，可以使用存储过程 sp_indexs 来查询表中索引的信息  视图概念：视图是一种虚拟表，可以从一个或者多个相关的表或其他视图中提取数据，是基本表的一种筛选，是基本表二次组合 在SQL Server中，根据索引的顺序与表中数据的物理顺序是否相同，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="https://eintol.github.io/2020/12/10/test/index.html">
+<meta property="og:title" content="程建尊的博客">
+<meta property="og:url" content="https://eintol.github.io/2021/01/07/chapter6/index.html">
 <meta property="og:site_name" content="程建尊的博客">
-<meta property="og:description" content="hexo博客搭建测试..">
+<meta property="og:description" content="使用关键字 create view 可以创建视图 索引可以提高数据查询的速度，因此，建立索引时，越多越好。这种说法是 错误 的 在SQL Server中，可以使用存储过程 sp_indexs 来查询表中索引的信息  视图概念：视图是一种虚拟表，可以从一个或者多个相关的表或其他视图中提取数据，是基本表的一种筛选，是基本表二次组合 在SQL Server中，根据索引的顺序与表中数据的物理顺序是否相同，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-12-10T14:57:53.000Z">
-<meta property="article:modified_time" content="2020-12-19T00:49:12.179Z">
+<meta property="article:published_time" content="2021-01-07T04:23:30.855Z">
+<meta property="article:modified_time" content="2021-01-03T09:16:30.347Z">
 <meta property="article:author" content="程建尊">
-<meta property="article:tag" content="test">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="程建尊的博客" type="application/atom+xml">
@@ -67,52 +66,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-chapter6" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/12/10/test/" class="article-date">
-  <time datetime="2020-12-10T14:57:53.000Z" itemprop="datePublished">2020-12-10</time>
+    <a href="/2021/01/07/chapter6/" class="article-date">
+  <time datetime="2021-01-07T04:23:30.855Z" itemprop="datePublished">2021-01-07</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      测试
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="hexo博客搭建测试"><a href="#hexo博客搭建测试" class="headerlink" title="hexo博客搭建测试.."></a>hexo博客搭建测试..</h1>
+        <p>使用关键字 <strong>create view</strong> 可以创建视图</p>
+<p>索引可以提高数据查询的速度，因此，建立索引时，越多越好。这种说法是 <strong>错误</strong> 的</p>
+<p>在SQL Server中，可以使用存储过程 <strong>sp_indexs</strong> 来查询表中索引的信息</p>
+<hr>
+<p><font color=orange><strong>视图概念：视图是一种虚拟表，可以从一个或者多个相关的表或其他视图中提取数据，是基本表的一种筛选，是基本表二次组合</strong></font></p>
+<p><font color=orange>在SQL Server中，根据索引的顺序与表中数据的物理顺序是否相同，可以将索引分为 <strong>聚集索引和非聚集索引</strong></font></p>
+<p><font color=orange><strong>“disable” 指定索引是否被禁用</strong></font></p>
+<p><font color=orange><strong>“rebuild” 指定索引是否重新启用</strong></font></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名</span><br><span class="line"><span class="comment">-- 加密</span></span><br><span class="line">[<span class="keyword">with</span> encryption]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">selcet 语句</span><br><span class="line"><span class="comment">-- example --</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> v_student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> view_name</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2020/12/10/test/" data-id="ckjmcisgt000cfswcfp2d2grl" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter6/" data-id="ckjmcisgp0007fswc94qre2cc" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2020/12/17/StringBuilder/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/07/chapter7/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          StringBuiler
+          (no title)
         
       </div>
     </a>
   
+  
+    <a href="/2021/01/07/chapter5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
   
 </nav>
 
