@@ -7,15 +7,15 @@
   
   <title>chapter8 | 程建尊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行  用户自定义函数与存储过程的区别：   存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据 存储过程可以独立执行，">
+  <meta name="description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行 存储过程创建 1234567891011121314151617181920212223create proc 过程名 [@形参名 数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="chapter8">
 <meta property="og:url" content="https://eintol.github.io/2021/01/07/chapter8/index.html">
 <meta property="og:site_name" content="程建尊的博客">
-<meta property="og:description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行  用户自定义函数与存储过程的区别：   存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据 存储过程可以独立执行，">
+<meta property="og:description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行 存储过程创建 1234567891011121314151617181920212223create proc 过程名 [@形参名 数">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-07T04:23:30.858Z">
-<meta property="article:modified_time" content="2021-01-07T05:11:42.467Z">
+<meta property="article:modified_time" content="2021-01-07T11:29:51.656Z">
 <meta property="article:author" content="程建尊">
 <meta name="twitter:card" content="summary">
   
@@ -92,15 +92,6 @@
 <p>存储过程的参数分为 <strong>输入参数和输出参数</strong> 两种类型</p>
 <p>在一般情况下，系统存储过程返回0表示 <strong>执行成功</strong> 返回非0表示 <strong>执行失败</strong></p>
 <p>触发器与存储过程不同，触发器由 <strong>事件</strong> 触发，存储过程是由 <strong>对象</strong> 执行</p>
-<hr>
-<p><font color=orange>用户自定义函数与存储过程的区别：</font> </p>
-<ul>
-<li><font color=orange><strong>存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据</strong></font></li>
-<li><font color=orange><strong>存储过程可以独立执行，用户自定义函数通常出现在SELECT语句中</strong></font></li>
-<li><font color=orange><strong>存储过程具有较为复杂的功能，用户自定义函数的功能通常具有针对性</strong></font></li>
-</ul>
-<p><font color=orange><strong>存储过程由输入/输出参数、编程语句和返回值组成</strong></font></p>
-<p><font color=orange><strong>用户自定义函数由参数、编程语句和返回值组成</strong></font></p>
 <h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p><strong>创建</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc 过程名 </span><br><span class="line">[@形参名 数据类型, ...][,]</span><br><span class="line">[@变参名 数据类型 <span class="keyword">output</span>]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    T-<span class="keyword">SQL</span> 语句</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--example--</span></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*<span class="number">1.2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line">@bili <span class="built_in">real</span>,</span><br><span class="line">@<span class="keyword">sum</span> <span class="built_in">float</span> <span class="keyword">output</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*(<span class="number">1</span>+bili)</span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">sum</span>=<span class="keyword">sum</span>(amount*price) <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">return</span> @<span class="keyword">sum</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -120,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter8/" data-id="ckjmg2k4j000bo8wc0kl418hg" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter8/" data-id="ckjmrrhk6000b40wcf4uu9hxh" class="article-share-link">Share</a>
       
       
     </footer>

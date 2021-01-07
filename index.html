@@ -91,13 +91,11 @@
 <p>整型数据类型包括 <strong>bigint, int, smallint, tinyint</strong> 4种类型，用于存放不同大小的整数数据</p>
 <p>表达式是使用各种 <strong>运算符</strong> 把 <strong>运算对象</strong> 连接起来组成的式子</p>
 <p>计算机与其他机器的区别在于其具有判断功能，而判断功能的实现要靠 <strong>流程控制语句</strong></p>
-<hr>
-<p><font color=orange><strong>局部变量名，前边以“@”开头；全局变量名，前边以“@@”开头</strong></font></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter3/" data-id="ckjmg2k4g0005o8wc3mog0c53" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter3/" data-id="ckjmrrhk2000540wc1r5fgcn2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,13 +132,11 @@
 <p>SQL Server备份数据库包括 <strong>系统数据库、用户数据库、事务日志</strong> 的备份</p>
 <p>使用backup database语句备份数据库时，如果指定differential选项，则表示要执行 <strong>差异备份</strong></p>
 <p>使用restore database语句还原数据库时，如果当前服务器中存在同名数据库，可以使用 <strong>replace</strong> 关键字，表示覆盖现有的数据库</p>
-<hr>
-<p><font color=orange>SQL Server4种备份方式，<strong>完整备份、差异备份、事务日志备份、文件或文件组备份</strong></font></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter10/" data-id="ckjmg2k4e0003o8wcgepx1g7m" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter10/" data-id="ckjmrrhk1000340wcaj8ze8jf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -181,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter9/" data-id="ckjmg2k4k000co8wcc3l87vg4" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter9/" data-id="ckjmrrhk7000c40wcgzsbhoc8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,15 +213,6 @@
 <p>存储过程的参数分为 <strong>输入参数和输出参数</strong> 两种类型</p>
 <p>在一般情况下，系统存储过程返回0表示 <strong>执行成功</strong> 返回非0表示 <strong>执行失败</strong></p>
 <p>触发器与存储过程不同，触发器由 <strong>事件</strong> 触发，存储过程是由 <strong>对象</strong> 执行</p>
-<hr>
-<p><font color=orange>用户自定义函数与存储过程的区别：</font> </p>
-<ul>
-<li><font color=orange><strong>存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据</strong></font></li>
-<li><font color=orange><strong>存储过程可以独立执行，用户自定义函数通常出现在SELECT语句中</strong></font></li>
-<li><font color=orange><strong>存储过程具有较为复杂的功能，用户自定义函数的功能通常具有针对性</strong></font></li>
-</ul>
-<p><font color=orange><strong>存储过程由输入/输出参数、编程语句和返回值组成</strong></font></p>
-<p><font color=orange><strong>用户自定义函数由参数、编程语句和返回值组成</strong></font></p>
 <h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p><strong>创建</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc 过程名 </span><br><span class="line">[@形参名 数据类型, ...][,]</span><br><span class="line">[@变参名 数据类型 <span class="keyword">output</span>]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    T-<span class="keyword">SQL</span> 语句</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--example--</span></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*<span class="number">1.2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line">@bili <span class="built_in">real</span>,</span><br><span class="line">@<span class="keyword">sum</span> <span class="built_in">float</span> <span class="keyword">output</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*(<span class="number">1</span>+bili)</span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">sum</span>=<span class="keyword">sum</span>(amount*price) <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">return</span> @<span class="keyword">sum</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -245,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter8/" data-id="ckjmg2k4j000bo8wc0kl418hg" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter8/" data-id="ckjmrrhk6000b40wcf4uu9hxh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter7/" data-id="ckjmg2k4i000ao8wcarp18ujl" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter7/" data-id="ckjmrrhk5000a40wch3t5ejyd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,18 +329,11 @@
         <p>使用关键字 <strong>create view</strong> 可以创建视图</p>
 <p>索引可以提高数据查询的速度，因此，建立索引时，越多越好。这种说法是 <strong>错误</strong> 的</p>
 <p>在SQL Server中，可以使用存储过程 <strong>sp_indexs</strong> 来查询表中索引的信息</p>
-<hr>
-<p><font color=orange><strong>视图概念：视图是一种虚拟表，可以从一个或者多个相关的表或其他视图中提取数据，是基本表的一种筛选，是基本表二次组合</strong></font></p>
-<p><font color=orange>在SQL Server中，根据索引的顺序与表中数据的物理顺序是否相同，可以将索引分为 <strong>聚集索引和非聚集索引</strong></font></p>
-<p><font color=orange><strong>“disable” 指定索引是否被禁用</strong></font></p>
-<p><font color=orange><strong>“rebuild” 指定索引是否重新启用</strong></font></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> 视图名</span><br><span class="line"><span class="comment">-- 加密</span></span><br><span class="line">[<span class="keyword">with</span> encryption]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line">selcet 语句</span><br><span class="line"><span class="comment">-- example --</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> v_student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student</span><br><span class="line"><span class="comment">-- 删除</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> view_name</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter6/" data-id="ckjmg2k4i0009o8wcb0o0d35j" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter6/" data-id="ckjmrrhk4000940wccdipemca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -398,44 +378,11 @@
 </ul>
 <p>having 子句的功能是指定组或聚合的搜索条件。having 子句通常与 <strong>group by</strong> 子句一起使用</p>
 <p>表结构所包含的内容：<strong>表的名称，表的列，列的数据类型，列的空值，列的主键，列的索引，列的约束，列的默认值</strong></p>
-<hr>
-<p><font color=orange><strong>delete from table 和 drop table 的区别：</strong></font></p>
-<ul>
-<li><font color=orange><strong>delete table 删除表的数据，表仍然存在，仍可以对表进行操作</strong></font></li>
-<li><font color=orange><strong>drop table，是从数据库中删除表。删除后，表结构不在存在，无法再对该表进行任何操作</strong></font></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center"><font color=orange>通配符</font></th>
-<th align="center">功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">%</td>
-<td align="center">包含零个或者多个任意字符的字符串</td>
-</tr>
-<tr>
-<td align="center">_</td>
-<td align="center">包含单个任意字符</td>
-</tr>
-</tbody></table>
-<p><font color=orange>having 与 where 的区别：</font></p>
-<ul>
-<li><p><font color=orange><strong>having 子句与 where 子句的相同点是二者都为查询数据指定查询条件，可达到同样的查询结果</strong></font></p>
-</li>
-<li><p><font color=orange><strong>where 子句必须在 group by 子句之前，having 子句必须在 group by 子句之后</strong></font></p>
-</li>
-<li><p><font color=orange><strong>where 子句中条件表达式不能包含聚合函数，having 子句中条件表达式可以包含聚合函数</strong></font></p>
-</li>
-</ul>
-<h3 id="表"><a href="#表" class="headerlink" title="表"></a>表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建表</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> table_name</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    <span class="keyword">name</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="built_in">date</span> datetime,</span><br><span class="line">    sex <span class="built_in">char</span>(<span class="number">8</span>) <span class="keyword">default</span>(<span class="string">&#x27;man&#x27;</span>)</span><br><span class="line">)</span><br><span class="line"><span class="comment">-- 删除表</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> table_name</span><br><span class="line"><span class="comment">-- 添加列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name</span><br><span class="line"><span class="keyword">add</span> age <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line"><span class="comment">-- 删除列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">column</span> age</span><br><span class="line"><span class="comment">-- 修改列</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">column</span> <span class="keyword">id</span> <span class="built_in">char</span>(<span class="number">20</span>) primary <span class="keyword">key</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 插入数据</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> table_name [(column_name1,column_name2, ...)] <span class="keyword">values</span> (value1,value2, ...)</span><br><span class="line"><span class="comment">-- example --</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span> (<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;man&#x27;</span>)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> student (<span class="keyword">id</span>,<span class="keyword">name</span>,sex) <span class="keyword">values</span> (<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;jerry&#x27;</span>,<span class="string">&#x27;woman&#x27;</span>)</span><br><span class="line"><span class="comment">-- 删除数据</span></span><br><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name [<span class="keyword">where</span> 条件表达式] <span class="comment">-- 没有条件表达式时，删除所有数据</span></span><br><span class="line"><span class="comment">-- 修改数据</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> column_name1=value1, ... [<span class="keyword">where</span> expression] <span class="comment">-- 没有条件表达式时，修改所有指定列</span></span><br><span class="line"><span class="keyword">update</span> student <span class="keyword">set</span> <span class="keyword">name</span>=<span class="string">&#x27;ei&#x27;</span> <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">&#x27;tom&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询</span></span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line"><span class="comment">-- distinct 去重，默认 all</span></span><br><span class="line">[<span class="keyword">all</span>|<span class="keyword">distinct</span>]</span><br><span class="line"><span class="comment">-- top n 查询前 n 行数据，top n percent 查询前 n% 行的数据</span></span><br><span class="line">[top n[<span class="keyword">percent</span>]] </span><br><span class="line"><span class="keyword">from</span> table_name </span><br><span class="line">[<span class="keyword">where</span> expression]</span><br><span class="line"><span class="comment">-- asc 升序，上小下大，值越往上越小；desc 降序，上大下小；</span></span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">column</span>[<span class="keyword">asc</span>|<span class="keyword">desc</span>]]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">column</span>]</span><br><span class="line">[<span class="keyword">having</span> expression]</span><br><span class="line"><span class="comment">-- group by 通常与 having 一起</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter5/" data-id="ckjmg2k4h0008o8wc1sha22ep" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter5/" data-id="ckjmrrhk3000740wc9dkge3rp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,46 +417,11 @@
         <p>在create database语句中使用 <strong>attach</strong> 关键字附加数据库</p>
 <p>使用 <strong>drop database</strong> 删除数据库</p>
 <p>使用存储过程 <strong>sp_detach_db</strong> 分离数据库</p>
-<hr>
-<p><font color=orange>根据多存储信息的不同，数据库文件可以分为 <strong>主数据库文件，次数据库文件和事务日志文件</strong></font></p>
-<table>
-<thead>
-<tr>
-<th align="center"><font color=orange>名称</font></th>
-<th align="center">用途</th>
-<th align="center">扩展名</th>
-<th align="center">数量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">主数据库文件</td>
-<td align="center">存放数据库对象</td>
-<td align="center">.mdf</td>
-<td align="center">每个数据库只有1个</td>
-</tr>
-<tr>
-<td align="center">次数据库文件</td>
-<td align="center">数据较多时补充存放数据库对象</td>
-<td align="center">.ndf</td>
-<td align="center">可以没有，也可有多个</td>
-</tr>
-<tr>
-<td align="center">事务日志文件</td>
-<td align="center">存放数据库事务日志信息</td>
-<td align="center">.ldf</td>
-<td align="center">至少1个，也可由多个</td>
-</tr>
-</tbody></table>
-<p><font color=orange>分离与删除数据库的区别：</font></p>
-<ul>
-<li><font color=orange><strong>相同：两者都是从数据库管理系统中除去数据库，在管理界面中再也看不到该数据库</strong></font></li>
-<li><font color=orange><strong>不同：删除数据库时数据库的物理文件被彻底删除，分离数据库时数据库的物理文件依然存在，所以才能被复制，然后在另一台服务器上被附加</strong></font></li>
-</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter4/" data-id="ckjmg2k4g0007o8wc7oz67f9d" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter4/" data-id="ckjmrrhk4000840wc6cjefwh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -551,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter2/" data-id="ckjmg2k4f0004o8wc2h1b51xc" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter2/" data-id="ckjmrrhk2000440wcevmq769m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -588,23 +500,12 @@
 <p>关系完整性约束是保证关系模型中数据完整性的重要手段，包括 <strong>实体完整性，参照完整性，和用户定义完整性</strong> 三种类型</p>
 <p>概念结构设计的任务是 <strong>将需求分析阶段得到的用户需求抽象为概念模型</strong></p>
 <p>逻辑结构设计的任务是 <strong>将E-R图转化为特定数据管理系统支持的逻辑模型</strong></p>
-<p>物理结构设计的任务是 <strong>为逻辑模型选取一个最合适的物理结构，包括数据库在物理设备上的存储结构和存取方法</strong></p>
-<hr>
-<p><font color=orange>数据库系统的组成    <strong>数据库系统由数据库、支持数据库运行的硬件和软件、数据库管理系统、数据库应用程序和人员组成</strong></font></p>
-<p><font color=orange>数据库管理系统应具备的功能 </font></p>
-<ul>
-<li><font color=orange><strong>数据定义：数据定义是数据库的定义功能</strong></font></li>
-<li><font color=orange><strong>数据操作：数据操作是数据库的操作功能</strong></font></li>
-<li><font color=orange><strong>数据查询：数据查询是数据库的检索功能</strong></font></li>
-<li><font color=orange><strong>数据控制：数据控制是数据库的保护功能</strong></font></li>
-</ul>
-<p><font color=orange>数据库设计的几个阶段</font></p>
-<p><font color=orange><strong>需求分析，概念结构设计，逻辑结构设计，物理结构设计，数据库实施，数据库的运行和维护</strong></font></p>
+<p>物理结构设计的任务是 **为逻辑模型选取一个最合适的物理结构，包括数据库在物理设备上的存储结构和存取方法</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://eintol.github.io/2021/01/07/chapter1/" data-id="ckjmg2k4b0001o8wc1vzde0hb" class="article-share-link">Share</a>
+      <a data-url="https://eintol.github.io/2021/01/07/chapter1/" data-id="ckjmrrhjy000140wc1hu3ete0" class="article-share-link">Share</a>
       
       
     </footer>
