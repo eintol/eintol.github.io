@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>程建尊的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行  用户自定义函数与存储过程的区别：   存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据 存储过程可以独立执行，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程建尊的博客">
+<meta property="og:url" content="https://eintol.github.io/2021/01/07/chapter8/index.html">
+<meta property="og:site_name" content="程建尊的博客">
+<meta property="og:description" content="存储过程在 服务器 端对数据库中的数据进行操作，并将结果返回到 客户 端 存储过程的参数分为 输入参数和输出参数 两种类型 在一般情况下，系统存储过程返回0表示 执行成功 返回非0表示 执行失败 触发器与存储过程不同，触发器由 事件 触发，存储过程是由 对象 执行  用户自定义函数与存储过程的区别：   存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据 存储过程可以独立执行，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-07T04:11:48.717Z">
+<meta property="article:modified_time" content="2021-01-03T13:30:24.880Z">
+<meta property="article:author" content="程建尊">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="程建尊的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">程建尊的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://eintol.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-chapter8" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/07/chapter8/" class="article-date">
+  <time datetime="2021-01-07T04:11:48.717Z" itemprop="datePublished">2021-01-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>存储过程在 <strong>服务器</strong> 端对数据库中的数据进行操作，并将结果返回到 <strong>客户</strong> 端</p>
+<p>存储过程的参数分为 <strong>输入参数和输出参数</strong> 两种类型</p>
+<p>在一般情况下，系统存储过程返回0表示 <strong>执行成功</strong> 返回非0表示 <strong>执行失败</strong></p>
+<p>触发器与存储过程不同，触发器由 <strong>事件</strong> 触发，存储过程是由 <strong>对象</strong> 执行</p>
+<hr>
+<p><font color=orange>用户自定义函数与存储过程的区别：</font> </p>
+<ul>
+<li><font color=orange><strong>存储过程通过OUTPUT参数返回数据，用户自定义函数通过返回值返回数据</strong></font></li>
+<li><font color=orange><strong>存储过程可以独立执行，用户自定义函数通常出现在SELECT语句中</strong></font></li>
+<li><font color=orange><strong>存储过程具有较为复杂的功能，用户自定义函数的功能通常具有针对性</strong></font></li>
+</ul>
+<p><font color=orange><strong>存储过程由输入/输出参数、编程语句和返回值组成</strong></font></p>
+<p><font color=orange><strong>用户自定义函数由参数、编程语句和返回值组成</strong></font></p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p><strong>创建</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc 过程名 </span><br><span class="line">[@形参名 数据类型, ...][,]</span><br><span class="line">[@变参名 数据类型 <span class="keyword">output</span>]</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    T-<span class="keyword">SQL</span> 语句</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">--example--</span></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*<span class="number">1.2</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> proc p_add</span><br><span class="line">@bili <span class="built_in">real</span>,</span><br><span class="line">@<span class="keyword">sum</span> <span class="built_in">float</span> <span class="keyword">output</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">update</span> table_name <span class="keyword">set</span> price=price*(<span class="number">1</span>+bili)</span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">sum</span>=<span class="keyword">sum</span>(amount*price) <span class="keyword">from</span> table_name</span><br><span class="line"><span class="keyword">return</span> @<span class="keyword">sum</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> proc 过程名</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec 存储过程名</span><br></pre></td></tr></table></figure>
+
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p><strong>创建</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> T_name</span><br><span class="line"><span class="keyword">on</span> table_name</span><br><span class="line">&#123;<span class="keyword">for</span>|<span class="keyword">after</span>|instead <span class="keyword">of</span>&#125;&#123;[<span class="keyword">insert</span>][,][<span class="keyword">update</span>][,][<span class="keyword">delete</span>]&#125;</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">SQL</span>-code</span><br><span class="line"><span class="comment">--example--</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> T_name</span><br><span class="line"><span class="keyword">on</span> table_name</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">declare</span> @<span class="keyword">id</span> <span class="built_in">int</span></span><br><span class="line"><span class="comment">-- 从inserted获取id</span></span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">id</span>=<span class="keyword">id</span> <span class="keyword">from</span> inserted</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student <span class="keyword">where</span> <span class="keyword">id</span>=@<span class="keyword">id</span></span><br><span class="line"><span class="keyword">if</span> @<span class="keyword">id</span> <span class="keyword">is</span> <span class="literal">null</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">print <span class="string">&#x27;id is not found&#x27;</span></span><br><span class="line"><span class="keyword">rollback</span> <span class="keyword">transaction</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">trigger</span> T_name</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://eintol.github.io/2021/01/07/chapter8/" data-id="ckjmc3zk0000aq8wcamgngc0z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/07/chapter9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/07/chapter7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/test/" style="font-size: 10px;">test</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/07/chapter10/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/07/chapter9/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/07/chapter8/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/07/chapter7/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/07/chapter6/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 程建尊<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
